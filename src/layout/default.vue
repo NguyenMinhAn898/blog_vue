@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="main container-fluid">
-      <div class="row vh-80">
+      <div class="row">
         <div class="col-md-2 py-3"><Menu /></div>
         <div class="col-md-10 p-3">
           <router-view></router-view>
@@ -14,9 +14,7 @@
       </div>
     </div>
     <div class="footer">
-      <div class="container">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   </div>
 </template>
@@ -42,20 +40,17 @@ export default {
 }
 .navbar-menu {
   max-height: 100px;
-  height: 80px;
+  height: 12vh;
   background-color: #303030;
 }
 .main {
   min-height: 80vh;
 }
-.vh-80 {
-  height: 80vh !important;
-}
 .background-content {
   background-color: #9b9999;
 }
 .footer {
-  min-height: 10vh;
+  min-height: 80px;
   background-color: #303030;
 }
 </style>

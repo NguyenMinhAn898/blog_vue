@@ -4,8 +4,8 @@
       <h2>Blog List</h2>
     </div>
     <div class="card-body">
-      <div v-if="!blogs">
-        <h3>Khong co du lieu</h3>
+      <div v-if="blogs.length == 0">
+        <h4>Không tồn tại dữ liệu !</h4>
       </div>
 
       <table v-else class="table table-bordered">
@@ -22,17 +22,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="blog in blogs" v-bind:key="blog">
+          <tr v-for="blog in blogs" v-bind:key="blog" class="text-center">
             <th scope="row">{{ blog.id }}</th>
-            <td>{{ blog.title }}</td>
-            <td>{{ blog.title }}</td>
-            <td>{{ blog.title }}</td>
-            <td>{{ blog.title }}</td>
-            <td>{{ blog.title }}</td>
-            <td class="text-center">
+            <td class="col-4 text-start">{{ blog.title }}</td>
+            <td class="col-2">{{ blog.category }}</td>
+            <td class="col-1">{{ blog.public ? "Yes" : "No" }}</td>
+            <td class="col-2">{{ blog.position }}</td>
+            <td class="col-1">{{ blog.data_public }}</td>
+            <td class="col-1">
               <button class="btn btn-outline-primary">Edit</button>
             </td>
-            <td class="text-center">
+            <td class="col-1">
               <button class="btn btn-outline-danger">Xóa</button>
             </td>
           </tr>

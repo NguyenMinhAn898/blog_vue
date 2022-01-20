@@ -10,17 +10,14 @@
             <label for="searchInput" class="col-form-label">Title :</label>
           </div>
           <div class="col-10">
-            <input
-              type="text"
-              id="searchInput"
-              class="form-control"
-              aria-describedby="passwordHelpInline"
-            />
+            <input type="text" v-model="search" class="form-control" />
           </div>
         </div>
         <div class="row text-center">
           <div class="w-25 m-auto pt-3">
-            <button class="btn btn-outline-success">Search</button>
+            <button class="btn btn-outline-success w-50" @click="SearchBlog">
+              Search
+            </button>
           </div>
         </div>
       </div>
@@ -30,5 +27,16 @@
 <script>
 export default {
   name: "BlogSearchForm",
+  data() {
+    return {
+      search: "",
+    };
+  },
+  watch: {},
+  methods: {
+    SearchBlog() {
+      this.$emit("searchBlog", this.search);
+    },
+  },
 };
 </script>
