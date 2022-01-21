@@ -25,9 +25,9 @@
           <tr v-for="blog in blogs" v-bind:key="blog" class="text-center">
             <th scope="row">{{ blog.id }}</th>
             <td class="col-4 text-start">{{ blog.title }}</td>
-            <td class="col-2">{{ blog.category }}</td>
+            <td class="col-2">{{ getCategoryName(blog.category) }}</td>
             <td class="col-1">{{ blog.public ? "Yes" : "No" }}</td>
-            <td class="col-2">{{ blog.position }}</td>
+            <td class="col-2">{{ getPlace(blog.position) }}</td>
             <td class="col-1">{{ blog.data_public }}</td>
             <td class="col-1">
               <button class="btn btn-outline-primary">Edit</button>
@@ -42,13 +42,30 @@
   </div>
 </template>
 <script>
+import Category from "../../store/Category";
+import Place from "../../store/Place";
+
 export default {
   name: "BlogList",
   data() {
-    return {};
+    return {
+      category: new Category(),
+      place: new Place(),
+    };
   },
   props: {
     blogs: Array,
+  },
+  methods: {
+    getCategory(id) {
+      return this.category.getDetail(id);
+    },
+    getCategoryName(id) {
+      return this.category.getName(id);
+    },
+    getPlace(arrPlaceId) {
+      return this.place.getName(arrPlaceId);
+    },
   },
 };
 </script>
