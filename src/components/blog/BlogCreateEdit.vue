@@ -1,16 +1,13 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <h2 v-if="blogDetail">Blog Detail</h2>
-      <h2 v-else>New Blog</h2>
+      <h2>{{blogTitle}}</h2>
     </div>
     <div class="card-body">
-      <div v-if="blogDetail">Heloo</div>
-      <div v-else>
         <form>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Tiêu đề</label>
-            <input type="text" class="form-control" id="blogtitle" />
+            <input type="text" class="form-control" id="blogtitle" :value="blogDetail.title" />
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label"
@@ -20,7 +17,7 @@
               type="text"
               rows="4"
               class="form-control"
-              id="exampleInputPassword1"
+              :value="blogDetail.des"
             />
           </div>
           <div class="mb-3">
@@ -31,44 +28,24 @@
               type="text"
               rows="6"
               class="form-control"
-              id="exampleInputPassword1"
+              :value="blogDetail.detail"
             />
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">Hình ảnh</label>
-            <input class="form-control" type="file" id="formFile" />
+            <input class="form-control" type="file"  />
           </div>
           <div class="mb-3">
             <label for="" class="form-label">Vị trí: </label>
             <div class="px-3 row">
-              <div class="form-check col-2">
+              <div v-for="item in Places.getData()" :key="item.id" class="form-check col-2">
                 <input
                   type="checkbox"
                   class="form-check-input"
                   id="exampleCheck1"
                 />
                 <label class="form-check-label" for="exampleCheck1"
-                  >Việt Nam</label
-                >
-              </div>
-              <div class="form-check col-2">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="exampleCheck1"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Châu Á</label
-                >
-              </div>
-              <div class="form-check col-2">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="exampleCheck1"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Châu Âu</label
+                  >{{item.name}}</label
                 >
               </div>
             </div>
@@ -139,7 +116,6 @@
             </div>
           </div>
         </form>
-      </div>
     </div>
     <div class="card-footer">
       <div class="d-flex justify-content-center">
@@ -150,10 +126,30 @@
   </div>
 </template>
 <script>
+import Place from "../../store/Place.js"
 export default {
   name: "BlogCreateEdit",
   props: {
-    blogDetail: Object,
+    blogDetail: {
+      type: Object,
+      default:()=>({
+          id:0,
+          title:"",
+          des:"",
+          detail:"",
+          category:0,
+          public:false,
+          data_public:"",
+          position:[],
+          thumbs:"",
+      })
+    },
+    blogTitle : String
   },
+  data(){
+    return {
+      Places : new Place
+    }
+  }
 };
 </script>

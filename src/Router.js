@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Home from './pages/home.vue';
-import Search from './pages/search.vue';
+import Home from './pages/home.vue'
+import Search from './pages/search.vue'
 import News from './pages/news.vue'
+import Detail from './pages/detail'
 
-const routes = [
-    {
+const routes = [{
         path: '/',
         component: Home
     },
@@ -19,7 +19,7 @@ const routes = [
     },
     {
         path: '/edit/:id',
-        component: News
+        component: Detail
     }
 ]
 

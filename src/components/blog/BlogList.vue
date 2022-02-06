@@ -30,7 +30,9 @@
             <td class="col-2">{{ getPlace(blog.position) }}</td>
             <td class="col-1">{{ blog.data_public }}</td>
             <td class="col-1">
-              <button class="btn btn-outline-primary">Edit</button>
+              <router-link :to="'/edit/'+ blog.id">
+                  <span class="btn btn-outline-primary">Edit</span>
+              </router-link>
             </td>
             <td class="col-1">
               <button class="btn btn-outline-danger">Xóa</button>
