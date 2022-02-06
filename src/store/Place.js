@@ -1,27 +1,23 @@
 // eslint-disable-next-line no-unused-vars
-export default class Place
-{
-    constructor() {
-    }
+export default class Place {
+    constructor() {}
 
-    data = [
-        {
+    data = [{
         id: 0,
-        name : "Việt Nam"
-        },{
+        name: "Việt Nam"
+    }, {
         id: 1,
-        name : "Châu Á"
-        },{
+        name: "Châu Á"
+    }, {
         id: 2,
-        name : "Châu Âu"
-        },{
+        name: "Châu Âu"
+    }, {
         id: 3,
-        name : "Châu Mỹ"
-        },{
+        name: "Châu Mỹ"
+    }, {
         id: 4,
-        name : "Châu Úc"
-        },
-    ];
+        name: "Châu Úc"
+    }, ];
 
     getData() {
         return this.data;
@@ -31,13 +27,12 @@ export default class Place
         return this.data.find(obj => {
             return obj.id === id
         });
-    }   
+    }
 
     getName(arrId) {
         let name = "";
-        this.data.forEach(obj => {
-            if (obj.id == arrId)
-                name = obj.name
+        arrId.forEach(id => {
+            this.data.find(obj => obj.id == id ? name += obj.name + ', ' : "")
         })
         return name;
     }
